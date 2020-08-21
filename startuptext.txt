@@ -1,0 +1,83 @@
+
+
+# = bash prompt
+> = mysql prompt
+
+(NOTE: # or > are NOT ACTUALLY TYPED, they initiate the prompt)
+
+
+//INITIAL TERMINAL COMMANDS & INSTRUCTIONS for MySQL and APACHE:
+========================================================
+# apt-get update
+# apt-get install -y mysql-server
+# service mysql start
+# service apache2 restart
+
+
+//ENTER and EXIT MYSQL CONSOLE:
+========================================================
+> mysql
+
+> exit
+
+
+//INSTALL PHPMYADMIN:
+========================================================
+# apt-get install -y php7.3-mbstring php7.3-mysqli phpmyadmin
+# service apache2 restart
+
+
+//PHPMYADMIN INSTALL OPTIONS:
+========================================================
+
+Please choose the web server that should be automatically configured to run phpMyAdmin. 1. apache2  2. lighttpd
+Choose: 1.
+
+Configure database for phpmyadmin with dbconfig-common? [yes/no] yes
+
+MySQL application password for phpmyadmin: root (will be hidden)
+Password confirmation: root.  (Will be hidden)
+
+# service apache2 restart
+
+
+//URL and PRIVILEGES:
+========================================================
+
+/* Check the URL with appended /phpmyadmin in browser
+from Project > Running URL and Port */
+
+/* Login with phpmyadmin, root
+Only 2 items in Databases will be seen (no privileges) */
+
+> mysql
+> GRANT ALL PRIVILEGES ON * . * TO 'phpmyadmin'@'localhost' WITH GRANT OPTION;
+
+* Login again with phpmyadmin, root
+Now 5 items in Databases will be seen (no privileges) */
+
+
+//EACH TIME to START MYSQL and WEB SERVER:
+============================================================================
+
+# service mysql start
+# service apache2 restart
+
+
+//CREATING ADDITIONAL USERS
+============================================================================
+
+/*Users---------------------*/
+CREATE USER 'phpmyadmin'@'localhost' IDENTIFIED BY 'root';
+
+
+
+//SHARING CONTAINER:
+========================================================
+
+Project > Share this Project:
+> Share as a Link
+• regardless of container
+• any goorm user
+• Editable (rootPERM)
+
